@@ -56,27 +56,29 @@
                         <th scope="col">Pages</th>
                         <th scope="col">EE</th>
                         <th scope="col">URL DBLP</th>
-                        <th scope="col">Mots-clés</th>
-                        <th scope="col">Résumé</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php var_dump($publications); ?>
-                    <?php foreach($publications as $publication):?>
-                    <tr>
-                        <th scope="row"><?php if(isset($publication['iddblp'])) {echo $publication['iddblp'];} ?></th>
-                        <td><?php if(isset($publication['type'])) {echo $publication['type'];} ?></td>
-                        <td><?php if(isset($publication['doi'])) {echo $publication['doi'];} ?></td>
-                        <td><?php if(isset($publication['title'])) {echo $publication['title'];} ?></td>
-                        <td><?php if(isset($publication['venue'])) {echo $publication['venue'];} ?></td>
-                        <td><?php if(isset($publication['year'])) {echo $publication['year'];} ?></td>
-                        <td><?php if(isset($publication['pages'])) {echo $publication['pages'];} ?></td>
-                        <td><?php if(isset($publication['ee'])) {echo $publication['ee'];} ?></td>
-                        <td><?php if(isset($publication['url'])) {echo $publication['url'];} ?></td>
-                        <td><?php if(isset($publication['keywords'])) {echo $publication['keywords'];} ?></td>
-                        <td><?php if(isset($publication['abstract'])) {echo $publication['abstract'];} ?></td>
-                    </tr>
-                    <?php endforeach;?>
+                    <!-- <pre>
+                    <?php print_r($publications); ?>
+                    </pre> -->
+                    <?php 
+                    foreach($publications['result']['hits']['hit'] as $publication) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $publication['@id']; ?></th>
+                            <td><?php echo $publication['info']['type']; ?></td>
+                            <td><?php echo $publication['info']['doi']; ?></td>
+                            <td><?php echo $publication['info']['title']; ?></td>
+                            <td><?php echo $publication['info']['venue']; ?></td>
+                            <td><?php echo $publication['info']['year']; ?></td>
+                            <td><?php echo $publication['info']['pages']; ?></td>
+                            <td><?php echo $publication['info']['ee']; ?></td>
+                            <td><?php echo $publication['info']['url']; ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>

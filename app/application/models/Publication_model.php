@@ -5,7 +5,7 @@ class Publication_model extends CI_Model {
     // Construire l'URL de l'API DBLP pour récupérer les publications de l'auteur
     $url = "https://dblp.org/search/publ/api?q=author%3AOrazio&format=json";
     // Effectuer une requête HTTP pour récupérer les données de l'API DBLP
-    $data = file_get_contents($url);
+    $data = file_get_contents('/media/amichelo/AXEL_500_GO/Scolaire/S4/R4.10/dblpViz/app/application/cache/publications.json');
     // Décoder les données JSON en tableau associatif
     $publications = json_decode($data, true);
     // Stocker les résultats dans un fichier JSON
