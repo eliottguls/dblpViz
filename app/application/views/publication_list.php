@@ -21,16 +21,9 @@
                 background-color: #e5f7ea;
                 color: #176d4b;
             }
-            .btn-dark {
-                background-color: #9ac0a7;
-                border-color: #9ac0a7;
-                text-align: center;
-                display: block;
-                margin: 0 auto;
-                width : 200px;
-            }
             .container {
                 margin-top: 40px;
+                margin-left : 0;
             }
             td {
                 background-color: white;
@@ -39,12 +32,15 @@
             tr:hover td {
                 background-color: #f2f2f2;
             }
+            table{
+                margin: 0 auto;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <h2><?php echo $title ?></h2>
-            <table class="table table-striped table-hover">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -72,7 +68,7 @@
                             <td><?php echo $publication['info']['title']; ?></td>
                             <td><?php echo $publication['info']['venue']; ?></td>
                             <td><?php echo $publication['info']['year']; ?></td>
-                            <td><?php echo $publication['info']['pages']; ?></td>
+                            <td><?php if(isset($publication['info']['pages'])) {echo $publication['info']['pages'];} else {echo 'non renseignée';}?></td>
                             <td><?php echo $publication['info']['ee']; ?></td>
                             <td><?php echo $publication['info']['url']; ?></td>
                         </tr>

@@ -5,18 +5,18 @@ class Publication_model extends CI_Model {
     // Construire l'URL de l'API DBLP pour récupérer les publications de l'auteur
     $url = "https://dblp.org/search/publ/api?q=author%3AOrazio&format=json";
     // Effectuer une requête HTTP pour récupérer les données de l'API DBLP
-    $data = file_get_contents('/media/amichelo/AXEL_500_GO/Scolaire/S4/R4.10/dblpViz/app/application/cache/publications.json');
+    $data = file_get_contents($url);
     // Décoder les données JSON en tableau associatif
     $publications = json_decode($data, true);
     // Stocker les résultats dans un fichier JSON
-    file_put_contents('publications.json', json_encode($publications));
+    file_put_contents(APPPATH . 'cache\publications.json', json_encode($publications));
     // Retourner les résultats sous forme de tableau associatif
     return $publications;
   }
 
   public function insert_publications_from_json($json_data) {
     $publications = json_decode($json_data, true)['result']['hits']['hit'];
-    $data = array();
+    $info = array();
 
     foreach ($publications as $publication) {
         $info = $publication['info'];
@@ -24,8 +24,9 @@ class Publication_model extends CI_Model {
         foreach ($info['authors']['author'] as $author) {
             $authors[] = $author['text'];
         }
-        $data[] = array(
-            'title' => $info['title'],
+        
+        $info[] = array(
+            'id_dblp' => $info['title'],
             'venue' => $info['venue'],
             'year' => $info['year'],
             'authors' => implode(', ', $authors),
@@ -34,7 +35,7 @@ class Publication_model extends CI_Model {
     }
 
     /* Inserting the data into the database. */
-    $this->db->insert_batch('publications', $data);
-}
+    $this->db->insert_batch('publications', $info);
+  }
 }
 ?>
