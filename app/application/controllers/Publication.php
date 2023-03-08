@@ -12,34 +12,56 @@ class Publication extends CI_Controller {
         // Récupération des publications de l'auteur depuis la base de données
         $this->load->model('Publication_model');
         $data['title']='List of publications';
-        $data['content']='publication_list';
+        $data['content']='home';
+
+        /* Loading the template view. */
+        $this->load->vars($data);
+        $this->load->view('template');
         
+        
+    }
+
+    public function get_article_by_author(){
+        $this->form_validation->set_rules('name', 'Name', 'required');
+
+        $author_name = $this->input->post('name');
+
+
         // Récupération des publications de l'auteur depuis la base de données
-        $publications = $this->Publication_model->get_publications_by_author('Orazio');
+        $publications = $this->Publication_model->get_publications_by_author($author_name);
 
         // Vérification que $publications n'est pas null avant de le passer à la vue
         if($publications !== null){
             $data['publications'] = $publications;
+            $data['content']='publication_list';
+            $data['title']='List of publications';
         } else {
             $data['title']='No list';
             $data['content']='no_list';
         }
+        /* Loading the template view. */
+        $this->load->vars($data);
+        $this->load->view('template');
+    }
 
-        // Récupération des publications de l'auteur depuis l'API dblp si elles n'existent pas déjà en base de données
-        $cache_file = APPPATH . 'cache/publications.json';
-        if (!file_exists($cache_file)) {
-            $author_name = 'Orazio';
-            $url = "https://dblp.org/search/publ/api?q=author%3AOrazio&format=json";
-            $result = file_get_contents($url);
-            file_put_contents($cache_file, $result);
+    public function get_article_by_title(){
+        $this->form_validation->set_rules('title', 'Title', 'required');
+
+        $article_title = $this->input->post('title');
+
+
+        // Récupération des publications de l'auteur depuis la base de données
+        $publications = $this->Publication_model->get_publications_by_article($article_title);
+
+        // Vérification que $publications n'est pas null avant de le passer à la vue
+        if($publications !== null){
+            $data['publications'] = $publications;
+            $data['content']='publication_list';
+            $data['title']='List of publications';
+        } else {
+            $data['title']='No list';
+            $data['content']='no_list';
         }
-
-        // Ajout des publications de l'auteur depuis le cache
-        $publications_cache = json_decode(file_get_contents($cache_file), true);
-        if (isset($publications_cache['result']['hits']['hit'])) {
-            $data['publications_cache'] = $publications_cache['result']['hits']['hit'];
-        }
-
         /* Loading the template view. */
         $this->load->vars($data);
         $this->load->view('template');

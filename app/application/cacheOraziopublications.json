@@ -1,0 +1,212 @@
+{
+"result":{
+"query":":filter:author:Orazio*",
+"status":{
+"@code":"200",
+"text":"OK"
+},
+"time":{
+"@unit":"msecs",
+"text":"4.05"
+},
+"completions":{
+"@total":"1",
+"@computed":"1",
+"@sent":"1",
+"c":{
+"@sc":"796",
+"@dc":"787",
+"@oc":"796",
+"@id":"47066621",
+"text":":filter:author:orazio"
+}
+},
+"hits":{
+"@total":"787",
+"@computed":"100",
+"@sent":"30",
+"@first":"0",
+"hit":[{
+"@score":"2",
+"@id":"1825692",
+"info":{"authors":{"author":[{"@pid":"142/8445","text":"Christian Javier D&apos;Orazio"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"}]},"title":"Circumventing iOS security mechanisms for APT forensic investigations: A security taxonomy for cloud apps.","venue":"Future Gener. Comput. Syst.","volume":"79","pages":"247-261","year":"2018","type":"Journal Articles","access":"closed","key":"journals/fgcs/DOrazioC18","doi":"10.1016/J.FUTURE.2016.11.010","ee":"https://doi.org/10.1016/j.future.2016.11.010","url":"https://dblp.org/rec/journals/fgcs/DOrazioC18"},
+"url":"URL#1825692"
+},
+{
+"@score":"2",
+"@id":"2161687",
+"info":{"authors":{"author":[{"@pid":"142/8445","text":"Christian Javier D&apos;Orazio"},{"@pid":"88/3562","text":"Rongxing Lu"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"},{"@pid":"40/4747","text":"Athanasios V. Vasilakos"}]},"title":"A Markov adversary model to detect vulnerable iOS devices and vulnerabilities in iOS apps.","venue":"Appl. Math. Comput.","volume":"293","pages":"523-544","year":"2017","type":"Journal Articles","access":"closed","key":"journals/amc/DOrazioLCV17","doi":"10.1016/J.AMC.2016.08.051","ee":"https://doi.org/10.1016/j.amc.2016.08.051","url":"https://dblp.org/rec/journals/amc/DOrazioLCV17"},
+"url":"URL#2161687"
+},
+{
+"@score":"2",
+"@id":"2190458",
+"info":{"authors":{"author":[{"@pid":"142/8445","text":"Christian Javier D&apos;Orazio"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"}]},"title":"A technique to circumvent SSL/TLS validations on iOS devices.","venue":"Future Gener. Comput. Syst.","volume":"74","pages":"366-374","year":"2017","type":"Journal Articles","access":"closed","key":"journals/fgcs/DOrazioC17","doi":"10.1016/J.FUTURE.2016.08.019","ee":"https://doi.org/10.1016/j.future.2016.08.019","url":"https://dblp.org/rec/journals/fgcs/DOrazioC17"},
+"url":"URL#2190458"
+},
+{
+"@score":"2",
+"@id":"2211905",
+"info":{"authors":{"author":[{"@pid":"142/8445","text":"Christian D&apos;Orazio"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"},{"@pid":"y/LaurenceTianruoYang","text":"Laurence T. Yang"}]},"title":"Data Exfiltration From Internet of Things Devices: iOS Devices as Case Studies.","venue":"IEEE Internet Things J.","volume":"4","number":"2","pages":"524-535","year":"2017","type":"Journal Articles","access":"closed","key":"journals/iotj/DOrazioCY17","doi":"10.1109/JIOT.2016.2569094","ee":"https://doi.org/10.1109/JIOT.2016.2569094","url":"https://dblp.org/rec/journals/iotj/DOrazioCY17"},
+"url":"URL#2211905"
+},
+{
+"@score":"2",
+"@id":"2513010",
+"info":{"authors":{"author":[{"@pid":"142/8445","text":"Christian D&apos;Orazio"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"}]},"title":"An adversary model to evaluate DRM protection of video contents on iOS devices.","venue":"Comput. Secur.","volume":"56","pages":"94-110","year":"2016","type":"Journal Articles","access":"closed","key":"journals/compsec/DOrazioC16","doi":"10.1016/J.COSE.2015.06.009","ee":"https://doi.org/10.1016/j.cose.2015.06.009","url":"https://dblp.org/rec/journals/compsec/DOrazioC16"},
+"url":"URL#2513010"
+},
+{
+"@score":"2",
+"@id":"2975405",
+"info":{"authors":{"author":[{"@pid":"142/8445","text":"Christian D&apos;Orazio"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"}]},"title":"A Generic Process to Identify Vulnerabilities and Design Weaknesses in iOS Healthcare Apps.","venue":"HICSS","pages":"5175-5184","year":"2015","type":"Conference and Workshop Papers","access":"closed","key":"conf/hicss/DOrazioC15","doi":"10.1109/HICSS.2015.611","ee":"https://doi.org/10.1109/HICSS.2015.611","url":"https://dblp.org/rec/conf/hicss/DOrazioC15"},
+"url":"URL#2975405"
+},
+{
+"@score":"2",
+"@id":"3064549",
+"info":{"authors":{"author":[{"@pid":"172/5552","text":"Ming Di Leom"},{"@pid":"142/8445","text":"Christian Javier D&apos;Orazio"},{"@pid":"147/5591","text":"Gaye Deegan"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"}]},"title":"Forensic Collection and Analysis of Thumbnails in Android.","venue":"TrustCom/BigDataSE/ISPA","pages":"1059-1066","year":"2015","type":"Conference and Workshop Papers","access":"closed","key":"conf/trustcom/LeomDDC15","doi":"10.1109/TRUSTCOM.2015.483","ee":"https://doi.org/10.1109/Trustcom.2015.483","url":"https://dblp.org/rec/conf/trustcom/LeomDDC15"},
+"url":"URL#3064549"
+},
+{
+"@score":"2",
+"@id":"3270453",
+"info":{"authors":{"author":[{"@pid":"142/8445","text":"Christian D&apos;Orazio"},{"@pid":"136/9703","text":"Aswami Ariffin"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"}]},"title":"iOS Anti-forensics: How Can We Securely Conceal, Delete and Insert Data?","venue":"HICSS","pages":"4838-4847","year":"2014","type":"Conference and Workshop Papers","access":"closed","key":"conf/hicss/DOrazioAC14","doi":"10.1109/HICSS.2014.594","ee":"https://doi.org/10.1109/HICSS.2014.594","url":"https://dblp.org/rec/conf/hicss/DOrazioAC14"},
+"url":"URL#3270453"
+},
+{
+"@score":"2",
+"@id":"3498493",
+"info":{"authors":{"author":[{"@pid":"136/9703","text":"Aswami Ariffin"},{"@pid":"142/8445","text":"Christian D&apos;Orazio"},{"@pid":"c/KimKwangRaymondChoo","text":"Kim-Kwang Raymond Choo"},{"@pid":"04/6319","text":"Jill Slay"}]},"title":"iOS Forensics: How Can We Recover Deleted Image Files with Timestamp in a Forensically Sound Manner?","venue":"ARES","pages":"375-382","year":"2013","type":"Conference and Workshop Papers","access":"closed","key":"conf/IEEEares/AriffinDCS13","doi":"10.1109/ARES.2013.50","ee":"https://doi.org/10.1109/ARES.2013.50","url":"https://dblp.org/rec/conf/IEEEares/AriffinDCS13"},
+"url":"URL#3498493"
+},
+{
+"@score":"1",
+"@id":"1258",
+"info":{"authors":{"author":[{"@pid":"270/4986","text":"Laura Romeo"},{"@pid":"125/6292","text":"Roberto Marani"},{"@pid":"02/1390","text":"Tiziana D&apos;Orazio"},{"@pid":"07/3028","text":"Grazia Cicirelli"}]},"title":"Video Based Mobility Monitoring of Elderly People Using Deep Learning Models.","venue":"IEEE Access","volume":"11","pages":"2804-2819","year":"2023","type":"Journal Articles","access":"open","key":"journals/access/RomeoMDC23","doi":"10.1109/ACCESS.2023.3234421","ee":"https://doi.org/10.1109/ACCESS.2023.3234421","url":"https://dblp.org/rec/journals/access/RomeoMDC23"},
+"url":"URL#1258"
+},
+{
+"@score":"1",
+"@id":"14304",
+"info":{"authors":{"author":[{"@pid":"337/7039","text":"Maria Vittoria Togo"},{"@pid":"337/6739","text":"Fabrizio Mastrolorito"},{"@pid":"178/9442","text":"Fulvio Ciriaco"},{"@pid":"281/5393","text":"Daniela Trisciuzzi"},{"@pid":"337/5652","text":"Anna Rita Tondo"},{"@pid":"281/8778","text":"Nicola Gambacorta"},{"@pid":"277/7047","text":"Loredana Bellantuono"},{"@pid":"165/0889","text":"Alfonso Monaco"},{"@pid":"26/8557-1","text":"Francesco Leonetti 0001"},{"@pid":"86/5707","text":"Roberto Bellotti"},{"@pid":"337/6184","text":"Cosimo Damiano Altomare"},{"@pid":"144/3225","text":"Nicola Amoroso"},{"@pid":"00/4549","text":"Orazio Nicolotti"}]},"title":"TIRESIA: An eXplainable Artificial Intelligence Platform for Predicting Developmental Toxicity.","venue":"J. Chem. Inf. Model.","volume":"63","number":"1","pages":"56-66","year":"2023","type":"Journal Articles","access":"closed","key":"journals/jcisd/TogoMCTTGBMLBAA23","doi":"10.1021/ACS.JCIM.2C01126","ee":"https://doi.org/10.1021/acs.jcim.2c01126","url":"https://dblp.org/rec/journals/jcisd/TogoMCTTGBMLBAA23"},
+"url":"URL#14304"
+},
+{
+"@score":"1",
+"@id":"21957",
+"info":{"authors":{"author":[{"@pid":"270/5053","text":"Giovanni Niro"},{"@pid":"270/5003","text":"Ilaria Marasco"},{"@pid":"01/9475","text":"Francesco Rizzi"},{"@pid":"127/2162","text":"Antonella D&apos;Orazio"},{"@pid":"240/0151","text":"Marco Grande"},{"@pid":"150/8506","text":"Massimo de Vittorio"}]},"title":"Design and Fabrication of a Flexible Gravimetric Sensor Based on a Thin-Film Bulk Acoustic Wave Resonator.","venue":"Sensors","volume":"23","number":"3","pages":"1655","year":"2023","type":"Journal Articles","access":"open","key":"journals/sensors/NiroMRDGV23","doi":"10.3390/S23031655","ee":"https://doi.org/10.3390/s23031655","url":"https://dblp.org/rec/journals/sensors/NiroMRDGV23"},
+"url":"URL#21957"
+},
+{
+"@score":"1",
+"@id":"38017",
+"info":{"authors":{"author":[{"@pid":"181/3296","text":"Deep Ray"},{"@pid":"337/2748","text":"Orazio Pinti"},{"@pid":"201/5484","text":"Assad A. Oberai"}]},"title":"Deep Learning and Computational Physics (Lecture Notes).","venue":"CoRR","volume":"abs/2301.00942","year":"2023","type":"Informal and Other Publications","access":"open","key":"journals/corr/abs-2301-00942","doi":"10.48550/ARXIV.2301.00942","ee":"https://doi.org/10.48550/arXiv.2301.00942","url":"https://dblp.org/rec/journals/corr/abs-2301-00942"},
+"url":"URL#38017"
+},
+{
+"@score":"1",
+"@id":"41128",
+"info":{"authors":{"author":[{"@pid":"243/5881","text":"Samuel Sokota"},{"@pid":"243/5789","text":"Ryan D&apos;Orazio"},{"@pid":"172/1134","text":"Chun Kai Ling"},{"@pid":"32/10400-2","text":"David J. Wu 0002"},{"@pid":"67/2526","text":"J. Zico Kolter"},{"@pid":"149/1329","text":"Noam Brown"}]},"title":"Abstracting Imperfect Information Away from Two-Player Zero-Sum Games.","venue":"CoRR","volume":"abs/2301.09159","year":"2023","type":"Informal and Other Publications","access":"open","key":"journals/corr/abs-2301-09159","doi":"10.48550/ARXIV.2301.09159","ee":"https://doi.org/10.48550/arXiv.2301.09159","url":"https://dblp.org/rec/journals/corr/abs-2301-09159"},
+"url":"URL#41128"
+},
+{
+"@score":"1",
+"@id":"74662",
+"info":{"authors":{"author":[{"@pid":"52/6324","text":"Giuseppe Di Modica"},{"@pid":"43/5379","text":"Orazio Tomarchio"}]},"title":"A Hierarchical Hadoop Framework to Process Geo-Distributed Big Data.","venue":"Big Data Cogn. Comput.","volume":"6","number":"1","pages":"5","year":"2022","type":"Journal Articles","access":"open","key":"journals/bdcc/ModicaT22","doi":"10.3390/BDCC6010005","ee":"https://doi.org/10.3390/bdcc6010005","url":"https://dblp.org/rec/journals/bdcc/ModicaT22"},
+"url":"URL#74662"
+},
+{
+"@score":"1",
+"@id":"107239",
+"info":{"authors":{"author":[{"@pid":"33/2727","text":"Michela Ponticorvo"},{"@pid":"95/5585","text":"Massimiliano Schembri"},{"@pid":"09/6538","text":"Orazio Miglino"}]},"title":"Training and assessing numerical abilities across the lifespan with intelligent systems: The example of Baldo.","venue":"Expert Syst. J. Knowl. Eng.","volume":"39","number":"1","year":"2022","type":"Journal Articles","access":"open","key":"journals/es/PonticorvoSM22","doi":"10.1111/EXSY.12817","ee":"https://doi.org/10.1111/exsy.12817","url":"https://dblp.org/rec/journals/es/PonticorvoSM22"},
+"url":"URL#107239"
+},
+{
+"@score":"1",
+"@id":"143552",
+"info":{"authors":{"author":[{"@pid":"281/5393","text":"Daniela Trisciuzzi"},{"@pid":"215/7782","text":"Lydia Siragusa"},{"@pid":"140/9030","text":"Massimo Baroni"},{"@pid":"275/1216","text":"Ida Autiero"},{"@pid":"00/4549","text":"Orazio Nicolotti"},{"@pid":"24/542","text":"Gabriele Cruciani"}]},"title":"Getting Insights into Structural and Energetic Properties of Reciprocal Peptide-Protein Interactions.","venue":"J. Chem. Inf. Model.","volume":"62","number":"4","pages":"1113-1125","year":"2022","type":"Journal Articles","access":"closed","key":"journals/jcisd/TrisciuzziSBANC22","doi":"10.1021/ACS.JCIM.1C01343","ee":"https://doi.org/10.1021/acs.jcim.1c01343","url":"https://dblp.org/rec/journals/jcisd/TrisciuzziSBANC22"},
+"url":"URL#143552"
+},
+{
+"@score":"1",
+"@id":"143553",
+"info":{"authors":{"author":[{"@pid":"281/5393","text":"Daniela Trisciuzzi"},{"@pid":"215/7782","text":"Lydia Siragusa"},{"@pid":"140/9030","text":"Massimo Baroni"},{"@pid":"24/542","text":"Gabriele Cruciani"},{"@pid":"00/4549","text":"Orazio Nicolotti"}]},"title":"An Integrated Machine Learning Model To Spot Peptide Binding Pockets in 3D Protein Screening.","venue":"J. Chem. Inf. Model.","volume":"62","number":"24","pages":"6812-6824","year":"2022","type":"Journal Articles","access":"closed","key":"journals/jcisd/TrisciuzziSBCN22","doi":"10.1021/ACS.JCIM.2C00583","ee":"https://doi.org/10.1021/acs.jcim.2c00583","url":"https://dblp.org/rec/journals/jcisd/TrisciuzziSBCN22"},
+"url":"URL#143553"
+},
+{
+"@score":"1",
+"@id":"187057",
+"info":{"authors":{"author":[{"@pid":"323/0856","text":"Domenico Patanè"},{"@pid":"323/0325","text":"Giuseppina Tusa"},{"@pid":"60/3703","text":"William Yang"},{"@pid":"323/0304","text":"Antonio Astuti"},{"@pid":"323/1024","text":"Antonio Colino"},{"@pid":"247/0148","text":"Antonio Costanza"},{"@pid":"323/1166","text":"Giuseppe D&apos;Anna"},{"@pid":"323/0698","text":"Sergio Di Prima"},{"@pid":"83/8028","text":"Gioacchino Fertitta"},{"@pid":"323/0953","text":"Salvatore Mangiagli"},{"@pid":"48/7206","text":"Claudio Martino"},{"@pid":"323/1143","text":"Orazio Torrisi"}]},"title":"The Urban Seismic Observatory of Catania (Italy): A Real-Time Seismic Monitoring at Urban Scale.","venue":"Remote. Sens.","volume":"14","number":"11","pages":"2583","year":"2022","type":"Journal Articles","access":"open","key":"journals/remotesensing/PataneTYACCDPFM22","doi":"10.3390/RS14112583","ee":"https://doi.org/10.3390/rs14112583","url":"https://dblp.org/rec/journals/remotesensing/PataneTYACCDPFM22"},
+"url":"URL#187057"
+},
+{
+"@score":"1",
+"@id":"199646",
+"info":{"authors":{"author":[{"@pid":"270/4986","text":"Laura Romeo"},{"@pid":"125/6292","text":"Roberto Marani"},{"@pid":"125/6251","text":"Anna Gina Perri"},{"@pid":"02/1390","text":"Tiziana D&apos;Orazio"}]},"title":"Microsoft Azure Kinect Calibration for Three-Dimensional Dense Point Clouds and Reliable Skeletons.","venue":"Sensors","volume":"22","number":"13","pages":"4986","year":"2022","type":"Journal Articles","access":"open","key":"journals/sensors/RomeoMPD22","doi":"10.3390/S22134986","ee":"https://doi.org/10.3390/s22134986","url":"https://dblp.org/rec/journals/sensors/RomeoMPD22"},
+"url":"URL#199646"
+},
+{
+"@score":"1",
+"@id":"206406",
+"info":{"authors":{"author":[{"@pid":"293/6884","text":"Angelo Marchese"},{"@pid":"43/5379","text":"Orazio Tomarchio"}]},"title":"A Blockchain-Based System for Agri-Food Supply Chain Traceability Management.","venue":"SN Comput. Sci.","volume":"3","number":"4","pages":"279","year":"2022","type":"Journal Articles","access":"open","key":"journals/sncs/MarcheseT22","doi":"10.1007/S42979-022-01148-3","ee":"https://doi.org/10.1007/s42979-022-01148-3","url":"https://dblp.org/rec/journals/sncs/MarcheseT22"},
+"url":"URL#206406"
+},
+{
+"@score":"1",
+"@id":"216132",
+"info":{"authors":{"author":[{"@pid":"261/3201","text":"Michele D&apos;Orazio"},{"@pid":"88/10673","text":"Riccardo Reale"},{"@pid":"151/5937","text":"Adele De Ninno"},{"@pid":"312/2967","text":"Maria A. Brighetti"},{"@pid":"15/5432","text":"Arianna Mencattini"},{"@pid":"30/9467","text":"Luca Businaro"},{"@pid":"83/10065","text":"Eugenio Martinelli"},{"@pid":"14/7814","text":"Paolo Bisegna"},{"@pid":"312/3345","text":"Alessandro Travaglini"},{"@pid":"68/3676","text":"Federica Caselli"}]},"title":"Electro-Optical Classification of Pollen Grains via Microfluidics and Machine Learning.","venue":"IEEE Trans. Biomed. Eng.","volume":"69","number":"2","pages":"921-931","year":"2022","type":"Journal Articles","access":"closed","key":"journals/tbe/DOrazioRNBMBMBT22","doi":"10.1109/TBME.2021.3109384","ee":"https://doi.org/10.1109/TBME.2021.3109384","url":"https://dblp.org/rec/journals/tbe/DOrazioRNBMBMBT22"},
+"url":"URL#216132"
+},
+{
+"@score":"1",
+"@id":"233839",
+"info":{"authors":{"author":[{"@pid":"07/3028","text":"Grazia Cicirelli"},{"@pid":"18/2866","text":"Donato Impedovo"},{"@pid":"235/1176","text":"Vincenzo Dentamaro"},{"@pid":"125/6292","text":"Roberto Marani"},{"@pid":"04/5001","text":"Giuseppe Pirlo"},{"@pid":"02/1390","text":"Tiziana D&apos;Orazio"}]},"title":"Human Gait Analysis in Neurodegenerative Diseases: A Review.","venue":"IEEE J. Biomed. Health Informatics","volume":"26","number":"1","pages":"229-242","year":"2022","type":"Journal Articles","access":"closed","key":"journals/titb/CicirelliIDMPD22","doi":"10.1109/JBHI.2021.3092875","ee":"https://doi.org/10.1109/JBHI.2021.3092875","url":"https://dblp.org/rec/journals/titb/CicirelliIDMPD22"},
+"url":"URL#233839"
+},
+{
+"@score":"1",
+"@id":"257044",
+"info":{"authors":{"author":[{"@pid":"279/2038","text":"Erick Skorupa Parolin"},{"@pid":"324/3290","text":"MohammadSaleh Hosseini"},{"@pid":"23/3288-2","text":"Yibo Hu 0002"},{"@pid":"k/LatifurKhan","text":"Latifur Khan"},{"@pid":"180/7185","text":"Patrick T. Brandt"},{"@pid":"40/5866","text":"Javier Osorio"},{"@pid":"149/9947","text":"Vito D&apos;Orazio"}]},"title":"Multi-CoPED: A Multilingual Multi-Task Approach for Coding Political Event Data on Conflict and Mediation Domain.","venue":"AIES","pages":"700-711","year":"2022","type":"Conference and Workshop Papers","access":"closed","key":"conf/aies/ParolinHHKBOD22","doi":"10.1145/3514094.3534178","ee":"https://doi.org/10.1145/3514094.3534178","url":"https://dblp.org/rec/conf/aies/ParolinHHKBOD22"},
+"url":"URL#257044"
+},
+{
+"@score":"1",
+"@id":"266149",
+"info":{"authors":{"author":[{"@pid":"279/2038","text":"Erick Skorupa Parolin"},{"@pid":"23/3288-2","text":"Yibo Hu 0002"},{"@pid":"k/LatifurKhan","text":"Latifur Khan"},{"@pid":"180/7185","text":"Patrick T. Brandt"},{"@pid":"40/5866","text":"Javier Osorio"},{"@pid":"149/9947","text":"Vito D&apos;Orazio"}]},"title":"Confli-T5: An AutoPrompt Pipeline for Conflict Related Text Augmentation.","venue":"Big Data","pages":"1906-1913","year":"2022","type":"Conference and Workshop Papers","access":"closed","key":"conf/bigdataconf/ParolinHKBOD22","doi":"10.1109/BIGDATA55660.2022.10020509","ee":"https://doi.org/10.1109/BigData55660.2022.10020509","url":"https://dblp.org/rec/conf/bigdataconf/ParolinHKBOD22"},
+"url":"URL#266149"
+},
+{
+"@score":"1",
+"@id":"266474",
+"info":{"authors":{"author":[{"@pid":"11/2374","text":"Laurent d&apos;Orazio"},{"@pid":"94/2593","text":"Jalil Boukhobza"},{"@pid":"336/0030","text":"Omer Rana"},{"@pid":"250/8901","text":"Juba Agoun"},{"@pid":"g/LeGruenwald","text":"Le Gruenwald"},{"@pid":"265/9619","text":"Hervé Rannou"},{"@pid":"b/ElisaBertino","text":"Elisa Bertino"},{"@pid":"h/MohandSaidHacid","text":"Mohand-Saïd Hacid"},{"@pid":"08/5644","text":"Taofik Saïdi"},{"@pid":"147/3374","text":"Georges Bossert"},{"@pid":"272/4447","text":"Van Long Nguyen Huu"},{"@pid":"94/2724","text":"Dimitri Tombroff"},{"@pid":"19/3497","text":"Makoto Onizuka"}]},"title":"The Lannion report on Big Data and Security Monitoring Research.","venue":"Big Data","pages":"2960-2969","year":"2022","type":"Conference and Workshop Papers","access":"closed","key":"conf/bigdataconf/dOrazioBRAGRBHSBHTO22","doi":"10.1109/BIGDATA55660.2022.10020852","ee":"https://doi.org/10.1109/BigData55660.2022.10020852","url":"https://dblp.org/rec/conf/bigdataconf/dOrazioBRAGRBHSBHTO22"},
+"url":"URL#266474"
+},
+{
+"@score":"1",
+"@id":"270037",
+"info":{"authors":{"author":[{"@pid":"293/6884","text":"Angelo Marchese"},{"@pid":"43/5379","text":"Orazio Tomarchio"}]},"title":"Network-Aware Container Placement in Cloud-Edge Kubernetes Clusters.","venue":"CCGRID","pages":"859-865","year":"2022","type":"Conference and Workshop Papers","access":"closed","key":"conf/ccgrid/MarcheseT22","doi":"10.1109/CCGRID54584.2022.00102","ee":"https://doi.org/10.1109/CCGrid54584.2022.00102","url":"https://dblp.org/rec/conf/ccgrid/MarcheseT22"},
+"url":"URL#270037"
+},
+{
+"@score":"1",
+"@id":"274757",
+"info":{"authors":{"author":[{"@pid":"137/3017","text":"Animesh Gupta"},{"@pid":"179/0125","text":"Viveka Konandur Rajanna"},{"@pid":"320/7710","text":"Thoithoi Salam"},{"@pid":"33/30","text":"Saurabh Jain"},{"@pid":"128/1011","text":"Orazio Aiello"},{"@pid":"228/3712","text":"Paolo Crovetti"},{"@pid":"48/4750","text":"Massimo Alioto"}]},"title":"DDPMnet: All-Digital Pulse Density-Based DNN Architecture with 228 Gate Equivalents/MAC Unit, 28-TOPS/W and 1.5-TOPS/mm2 in 40nm.","venue":"CICC","pages":"1-2","year":"2022","type":"Conference and Workshop Papers","access":"closed","key":"conf/cicc/GuptaRSJACA22","doi":"10.1109/CICC53496.2022.9772786","ee":"https://doi.org/10.1109/CICC53496.2022.9772786","url":"https://dblp.org/rec/conf/cicc/GuptaRSJACA22"},
+"url":"URL#274757"
+},
+{
+"@score":"1",
+"@id":"276686",
+"info":{"authors":{"author":[{"@pid":"171/0362","text":"Domenico Calcaterra"},{"@pid":"43/5379","text":"Orazio Tomarchio"}]},"title":"Automated Generation of Application Management Workflows using TOSCA Policies.","venue":"CLOSER","pages":"97-108","year":"2022","type":"Conference and Workshop Papers","access":"closed","key":"conf/closer/CalcaterraT22","doi":"10.5220/0011096200003200","ee":"https://doi.org/10.5220/0011096200003200","url":"https://dblp.org/rec/conf/closer/CalcaterraT22"},
+"url":"URL#276686"
+},
+{
+"@score":"1",
+"@id":"276701",
+"info":{"authors":{"author":[{"@pid":"293/6884","text":"Angelo Marchese"},{"@pid":"43/5379","text":"Orazio Tomarchio"}]},"title":"Communication Aware Scheduling of Microservices-based Applications on Kubernetes Clusters.","venue":"CLOSER","pages":"190-198","year":"2022","type":"Conference and Workshop Papers","access":"closed","key":"conf/closer/MarcheseT22","doi":"10.5220/0011049300003200","ee":"https://doi.org/10.5220/0011049300003200","url":"https://dblp.org/rec/conf/closer/MarcheseT22"},
+"url":"URL#276701"
+}
+]
+}
+}
+}
