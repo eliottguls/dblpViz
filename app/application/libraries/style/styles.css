@@ -1,0 +1,50 @@
+/* Style pour le titre h2 */
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #007CBA;
+    margin-bottom: 20px;
+  }
+  
+  /* Style pour la liste ul */
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 40px;
+  }
+  
+  /* Style pour chaque élément li */
+  li {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  /* Style pour le lien delete */
+  a {
+    color: #FF6100;
+    text-decoration: none;
+  }
+  
+  /* Style pour le lien delete lorsqu'il est survolé */
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Style pour les éléments sur les écrans de grande taille */
+  @media (min-width: 768px) {
+    /* Utilisation d'une grille de 2 colonnes */
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+    }
+  
+    /* Ajustement de la hauteur de chaque élément li */
+    li {
+      height: 80px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
