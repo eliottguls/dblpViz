@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'surus.db.elephantsql.com',
-	'username' => 'nmufujuj',
-	'password' => 'RMIaG4mfiWSp38-57pnB9j_6HOVs2uP3',
-	'database' => 'nmufujuj',
+	'hostname' => 'dblp.postgres.database.azure.com',
+	'username' => 'postgres ',
+	'password' => 'aR6jtZ1!?!',
+	'database' => 'dblp_vis_db',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

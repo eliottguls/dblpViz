@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <style>
         body {
-            background-color: #e0f2e9;
+            background-color: grey;
         }
         h2 {
-            color: #176d4b;
+            color: white;
             text-align: center;
             margin-top: 40px;
         }
@@ -22,6 +22,9 @@
     }
     .container {
         margin-top: 40px;
+    }
+    label{
+        color: white;
     }
 
 
@@ -36,7 +39,7 @@
                 <label for="id">Author</label>
                 <input type="input" class="form-control" name ="name"?><br/>
             </div>
-            <button type="submit" name="submit" value ="Create" class="btn btn-primary">Search</button>
+            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
     </div>
     <div class="container">
@@ -47,7 +50,7 @@
                 <label for="id">Title</label>
                 <input type="input" class="form-control" name ="title"?><br/>
             </div>
-            <button type="submit" name="submit" value ="Create" class="btn btn-primary">Search</button>
+            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

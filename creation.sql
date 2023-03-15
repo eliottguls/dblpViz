@@ -1,31 +1,37 @@
-drop schema if exists appli_dblp cascade;
-create schema appli_dblp;
-set schema 'appli_dblp';
-
-CREATE TABLE _article(
-    id_dblp INTEGER PRIMARY KEY,
-    type VARCHAR(1000) not null,
-    doi VARCHAR(255) not null,
-    title VARCHAR(1000) not null,
-    venue VARCHAR(100) not null,
-    year date not null,
-    pages VARCHAR(20) not null,
-    ee VARCHAR(1000) not null,
-    url_dblp VARCHAR(1000) not null
+DROP SCHEMA if exists appli_dblp CASCADE;
+CREATE SCHEMA appli_dblp;
+SET SCHEMA 'appli_dblp';
+CREATE TABLE _article
+(
+  id_dblp    INTEGER PRIMARY KEY,
+  type       VARCHAR(1000) NOT NULL,
+  doi        VARCHAR(255) NOT NULL,
+  title      VARCHAR(1000) NOT NULL,
+  venue      VARCHAR(100) NOT NULL,
+  year       INTEGER NOT NULL,
+  pages      VARCHAR(20) NOT NULL,
+  ee         VARCHAR(1000) NOT NULL,
+  url_dblp   VARCHAR(1000) NOT NULL
 );
-
-CREATE TABLE _author(
-    id_author INTEGER PRIMARY KEY,
-    name VARCHAR(255) not null,
-    last_name VARCHAR(255) not null
+CREATE TABLE _author
+(
+  id_author   SERIAL PRIMARY KEY,
+  name        VARCHAR(255) NOT NULL,
 );
-
-CREATE TABLE _written_by(
-    id_dblp INTEGER not null,
-    id_author INTEGER not null,
-    PRIMARY KEY (id_dblp, id_author),
-    FOREIGN KEY (id_dblp) REFERENCES _article(id_dblp),
-    FOREIGN KEY (id_author) REFERENCES _author(id_author)
+CREATE TABLE _written_by
+(
+  id_dblp     INTEGER NOT NULL,
+  id_author   INTEGER NOT NULL,
+  PRIMARY KEY (id_dblp,id_author),
+  FOREIGN KEY (id_dblp) REFERENCES _article (id_dblp),
+  FOREIGN KEY (id_author) REFERENCES _author (id_author)
+);
+CREATE TABLE _rank
+(
+  id_article   INT PRIMARY KEY,
+  rank         VARCHAR(255),
+  categorie    VARCHAR(255),
+  FOREIGN KEY (id_article) REFERENCES _article(id_dblp)
 );
 
 
