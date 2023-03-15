@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'dblp.postgres.database.azure.com',
-	'username' => 'postgres ',
+	'hostname' => 'wsrv.postgres.database.azure.com',
+	'username' => 'eguls ',
 	'password' => 'aR6jtZ1!?!',
-	'database' => 'dblp_vis_db',
+	'database' => 'paper_vision',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

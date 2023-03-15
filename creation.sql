@@ -16,7 +16,7 @@ CREATE TABLE _article
 CREATE TABLE _author
 (
   id_author   SERIAL PRIMARY KEY,
-  name        VARCHAR(255) NOT NULL,
+  name        VARCHAR(255) NOT NULL
 );
 CREATE TABLE _written_by
 (

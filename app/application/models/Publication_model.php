@@ -2,6 +2,12 @@
 class Publication_model extends CI_Model
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
+
     public function get_publications_by_author($author_name)
     {
 
@@ -17,7 +23,7 @@ class Publication_model extends CI_Model
 
         try {
           // Insertion des données dans la base de données
-          $this->$db->insert('_article', array(
+          $this->db->insert('_article', array(
               'id_dblp' => intval($all_data['result']['hits']['hit']['@id']),
               'doi' => $all_data['result']['hits']['hit']['info']['doi'],
               'title' => $all_data['result']['hits']['hit']['info']['title'],
