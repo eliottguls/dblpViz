@@ -15,12 +15,34 @@ class Publication_model extends CI_Model
         // Récupérer le nombre total de résultats
         $total_results = $info['result']['hits']['@total'];
 
-        // Récupérer tous les résultats en une seule requête
-        if ($total_results > 0) {
-            $all_url = $url . '&h=' . $total_results;
-            $all_response = file_get_contents($all_url);
-            $all_data = json_decode($all_response, true);
-        }
+        try {
+          // Insertion des données dans la base de données
+          $this->$db->insert('_article', array(
+              'id_dblp' => intval($all_data['result']['hits']['hit']['@id']),
+              'doi' => $all_data['result']['hits']['hit']['info']['doi'],
+              'title' => $all_data['result']['hits']['hit']['info']['title'],
+              'venue' => $all_data['result']['hits']['hit']['info']['venue'],
+              'year' => intval($all_data['result']['hits']['hit']['info']['year']),
+              'pages' => $all_data['result']['hits']['hit']['info']['pages'],
+              'ee' => $all_data['result']['hits']['hit']['info']['ee'],
+              'url_dblp' => $all_data['result']['hits']['hit']['info']['url'],
+          ));
+  
+          foreach ($all_data['result']['hits']['hit']['info']['authors']['author']['text'] as $author) {
+              // Vérifier si l'auteur existe déjà
+              $query = $this->db->get_where('_author', array('name' => $author));
+              $result = $query->row();
+  
+              // Si l'auteur n'existe pas, l'ajouter
+              if (!$result) {
+                  $this->db->insert('_author', array('name' => $author));
+              }
+          }
+      } catch (Exception $e) {
+          // En cas d'erreur de la base de données, ajouter l'erreur à $all_data
+          $all_data['error'] = $e->getMessage();
+      }
+  
 
         // chemin du fichier cache
         $cache_file = APPPATH . 'cache/dblp/author/filter__' . $author_name . '__publications.json';
