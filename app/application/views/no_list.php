@@ -17,7 +17,8 @@
   <div class="row">
     <div class="col-md-12"> 
       <h2>ERROR</h2>
-      <?php echo '<p>'. $error. '</p>'; ?>
+      <?php echo '<h3>'. $error. '</h3>'; ?>
+      <p> <a href="http://localhost:3000/app/Publication" class="btn btn-primary">Retour à la recherche</a></p>
     </div>
   </div>
 </div>

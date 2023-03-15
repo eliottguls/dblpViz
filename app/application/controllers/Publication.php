@@ -33,12 +33,18 @@ class Publication extends CI_Controller {
         // Vérification que $publications n'est pas null avant de le passer à la vue
         if(array_key_exists('hit', $publications['result']['hits'])){
             $data['publications'] = $publications;
+            if (array_key_exists('error', $publications)){
+                $data['error'] = $publications['error'];
+            } else {
+                $data['error'] = 'No db error';
+            }
             $data['content']='publication_list';
             $data['title']='List of publications';
         } else {
             $data['title']='No list';
             $data['content']='no_list';
         }
+
         
         /* Loading the template view. */
         $this->load->vars($data);
@@ -55,7 +61,7 @@ class Publication extends CI_Controller {
         // Récupération des publications de l'auteur depuis la base de données
         $publications = $this->Publication_model->get_publications_by_article($article_title);
 
-        /*
+        
         // Vérification que $publications n'est pas null avant de le passer à la vue
         if($publications['result']['hits']['hit'] !== null){
             $data['publications'] = $publications;
@@ -65,11 +71,9 @@ class Publication extends CI_Controller {
             $data['error'] = $publications;
             $data['title']='No list';
             $data['content']='no_list';
-        }*/
+        }
 
-        $data['error'] = $publications;
-        $data['title']='No list';
-        $data['content']='no_list';
+
         
         /* Loading the template view. */
         $this->load->vars($data);
