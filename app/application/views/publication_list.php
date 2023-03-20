@@ -80,8 +80,8 @@ foreach ($publications['result']['hits']['hit'] as $publication) {
     ?>
                         <tr>
                             <th scope="row"><?php if (isset($publication['@id'])) {echo $publication['@id'];} else {echo '<strong>non renseigné</strong>';}?></th>
-                            <th scope="row"><?php echo $j;
-    $j = $j + 1; ?></th>
+                            <th scope="row"><?php
+                            $j = $j + 1; ?></th>
                             <td><ul><?php foreach ($publication['info']['authors']['author'] as $author) {?> <li> <?php echo $publication['info']['authors']['author'][$i]['text']; ?></li><br><?php $i++;}?></ul></td>
                             <th><?php if (isset($publication['@score'])) {echo $publication['@score'];} else {echo "<strong>non renseigné</strong>";}?></th>
                             <td><?php if (isset($publication['info']['type'])) {echo $publication['info']['type'];} else {echo "<strong>non renseigné</strong>";}?></td>

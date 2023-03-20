@@ -35,6 +35,11 @@ class Publication_model extends CI_Model
 
                 if (!$result) {
                     if (isset($publication['info']['doi'])) {
+                        if (isset($publication['info']['pages'])) {
+                            $year = $publication['info']['pages'];
+                        } else {
+                            $year = '';
+                        }
                         // Insertion des données dans la base de données si l'article n'est pas déjà dedans
                         $this->db->insert('_article', array(
                             'id_dblp' => intval($publication['@id']),
@@ -43,21 +48,21 @@ class Publication_model extends CI_Model
                             'title' => $publication['info']['title'],
                             'venue' => $publication['info']['venue'],
                             'year' => intval($publication['info']['year']),
-                            'pages' => $publication['info']['pages'],
+                            'pages' => $year,
                             'ee' => $publication['info']['ee'],
                             'url_dblp' => $publication['info']['url'],
                         ));
 
-                        foreach ($publication['info']['authors']['author'] as $author) {
+                        foreach ($publication['info']['authors']['author'][0] as $author) {
                             // Vérifier si l'auteur existe déjà
-                            $query = $this->db->get_where('_author', array('id_author' => $author['@pid']));
+                            $name = $author['text'];
+                            $query = $this->db->get_where('_author', array('name' => $name));
                             $result = $query->row();
 
                             // Si l'auteur n'existe pas, l'ajouter
                             if (!$result) {
                                 $this->db->insert('_author', array(
-                                    'id_author' => $author['@pid'],
-                                    'name' => $author['text'],
+                                    'name' => $name,
                                 ));
                             }
                         }
@@ -103,7 +108,7 @@ class Publication_model extends CI_Model
                 $all_url = $url . '&h=' . $end . '&f=' . $beggining;
                 $all_response = file_get_contents($all_url);
                 $all_data = json_decode($all_response, true);
-                $all_results = array_merge($all_results, $all_data);
+                $all_results = array_merge($all_results, $all_data['result']['hits']['hit']);
                 $beggining += 1000;
                 $end += 1000;
 
@@ -128,21 +133,20 @@ class Publication_model extends CI_Model
                                     'url_dblp' => $publication['info']['url'],
                                 ));
 
-                                foreach ($publication['info']['authors']['author'] as $author) {
+                                foreach ($publication['info']['authors']['author'][0] as $author) {
                                     // Vérifier si l'auteur existe déjà
-                                    $query = $this->db->get_where('_author', array('id_author' => strval($author['@pid'])));
+                                    $name = $author['text'];
+                                    $query = $this->db->get_where('_author', array('name' => $name));
                                     $result = $query->row();
 
                                     // Si l'auteur n'existe pas, l'ajouter
                                     if (!$result) {
                                         $this->db->insert('_author', array(
-                                            'id_author' => $author['@pid'],
-                                            'name' => $author['text'],
+                                            'name' => $name,
                                         ));
                                     }
                                 }
                             }
-
                         }
                     } catch (Exception $e) {
                         // En cas d'erreur de la base de données, ajouter l'erreur à $all_data
@@ -154,37 +158,5 @@ class Publication_model extends CI_Model
 
         // Retourner les publications sous forme de tableau associatif
         return $all_data;
-
-        /*
-    foreach ($all_results as $publi){
-    $year = $all_results['result']['hits']['hit']['info']['year'];
-    // URL de l'API Scimago
-    $url = "https://www.scimagojr.com/journalrank.php?out=json&year=".$year;
-
-    // Récupérer les données JSON depuis l'API
-    $json_data = file_get_contents($url);
-
-    $cache_file = APPPATH . 'cache/scimago/'.$year .'__ranks.json';
-    file_put_contents($cache_file, $json_data);
-
-    // Convertir les données JSON en tableau PHP
-    $output = json_decode($json_data, true);
-
-    // Récupérer le classement des articles par catégorie
-    $categories = $output['categories'];
-    foreach ($categories as $category) {
-    $category_name = $category['category'];
-    $rankings = $category['ranks'];
-    foreach ($rankings as $ranking) {
-    $data['rank'] = $ranking['rank'];
-    $this->$db->insert('_rank', array(
-    'id_article' => $$all_results['@id'],
-    'rank' => $data['rank'],
-    'categorie' => $category_name
-    ));
-    }
-    }
-    }*/
-
     }
 }
