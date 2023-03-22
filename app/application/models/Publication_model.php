@@ -167,7 +167,9 @@ class Publication_model extends CI_Model
                                         for ($i = 0; $i < count($publication['info']['authors']['author']); $i++) {
                                             // Vérifier si l'auteur existe déjà
                                             $all_data = $publication['info']['authors']['author'];
-                                            $name = $all_data[$i]['text'];
+                                            if (isset($all_data[$i]['text'])){
+                                                $name = $all_data[$i]['text'];
+                                            }
 
                                             if (isset($name)) {
                                                 $query = $this->db->get_where('_author', array('name' => $name));
@@ -183,7 +185,9 @@ class Publication_model extends CI_Model
                                                 // Ajouter dans _wr
                                                 $this->db->insert("_written_by", array(
                                                     'id_dblp' => intval($publication['@id']),
-                                                    'name' => $name)
+                                                    'name' => $name,
+                                                    'pos' => $i,
+                                                    )
                                                 );
 
                                             }
