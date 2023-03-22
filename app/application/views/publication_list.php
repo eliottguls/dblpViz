@@ -71,7 +71,7 @@
                 </thead>
                 <tbody>
                     <!-- <pre>
-                    <?php print_r($publications['result']['hits']);?>
+                    <?php print_r($publications);?>
                     </pre> -->
                     <?php
 $j = 0;

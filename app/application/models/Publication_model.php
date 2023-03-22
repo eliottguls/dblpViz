@@ -112,38 +112,82 @@ class Publication_model extends CI_Model
                 $beggining += 1000;
                 $end += 1000;
 
+                $temp = 0;
                 foreach ($all_data['result']['hits']['hit'] as $publication) {
+                    //var pour savoir si c'est un article qui nous intéresse
+                    $temp = 0;
                     try {
-                        // Vérifier si l'auteur existe déjà
+                        // Vérifier si l'article existe déjà
                         $query = $this->db->get_where('_article', array('id_dblp' => $publication['@id']));
                         $result = $query->row();
 
                         if (!$result) {
                             if (isset($publication['info']['doi']) && isset($publication['info']['pages'])) {
-                                // Insertion des données dans la base de données si l'article n'est pas déjà dedans
-                                $this->db->insert('_article', array(
-                                    'id_dblp' => intval($publication['@id']),
-                                    'type' => $publication['info']['type'],
-                                    'doi' => strval($publication['info']['doi']),
-                                    'title' => $publication['info']['title'],
-                                    'venue' => $publication['info']['venue'],
-                                    'year' => intval($publication['info']['year']),
-                                    'pages' => $publication['info']['pages'],
-                                    'ee' => $publication['info']['ee'],
-                                    'url_dblp' => $publication['info']['url'],
-                                ));
+                                if (!is_array($publication['info']['venue']) && isset($publication['info']['venue'])) {
 
-                                foreach ($publication['info']['authors']['author'][0] as $author) {
-                                    // Vérifier si l'auteur existe déjà
-                                    $name = $author['text'];
-                                    $query = $this->db->get_where('_author', array('name' => $name));
-                                    $result = $query->row();
-
-                                    // Si l'auteur n'existe pas, l'ajouter
-                                    if (!$result) {
-                                        $this->db->insert('_author', array(
-                                            'name' => $name,
+                                    if ($publication['info']['type'] == 'Conference and Workshop Papers') {
+                                        // Insertion des données dans la base de données si l'article n'est pas déjà dedans
+                                        $this->db->insert('_article', array(
+                                            'id_dblp' => intval($publication['@id']),
+                                            'type' => $publication['info']['type'],
+                                            'doi' => strval($publication['info']['doi']),
+                                            'title' => $publication['info']['title'],
+                                            'venue' => $publication['info']['venue'],
+                                            'year' => intval($publication['info']['year']),
+                                            'pages' => $publication['info']['pages'],
+                                            'ee' => $publication['info']['ee'],
+                                            'url_dblp' => $publication['info']['url'],
                                         ));
+                                        $this->db->insert('_conference_article', array(
+                                            'id_dblp' => intval($publication['@id']),
+                                        ));
+                                    } else if ($publication['info']['type'] == 'Journal Articles' && isset($publication['info']['number'])) {
+                                        // Insertion des données dans la base de données si l'article n'est pas déjà dedans
+                                        $this->db->insert('_article', array(
+                                            'id_dblp' => intval($publication['@id']),
+                                            'type' => $publication['info']['type'],
+                                            'doi' => strval($publication['info']['doi']),
+                                            'title' => $publication['info']['title'],
+                                            'venue' => $publication['info']['venue'],
+                                            'year' => intval($publication['info']['year']),
+                                            'pages' => $publication['info']['pages'],
+                                            'ee' => $publication['info']['ee'],
+                                            'url_dblp' => $publication['info']['url'],
+                                        ));
+                                        $this->db->insert('_journal_article', array(
+                                            'id_dblp' => intval($publication['@id']),
+                                            'volume' => $publication['info']['venue'],
+                                            'number_journal' => $publication['info']['number'],
+                                        ));
+                                    } else {
+                                        $temp = 1;
+                                    }
+                                    if ($temp === 0) {
+                                        // Insertion des données dans la base de données si l'article n'est pas déjà dedans
+                                        for ($i = 0; $i < count($publication['info']['authors']['author']); $i++) {
+                                            // Vérifier si l'auteur existe déjà
+                                            $all_data = $publication['info']['authors']['author'];
+                                            $name = $all_data[$i]['text'];
+
+                                            if (isset($name)) {
+                                                $query = $this->db->get_where('_author', array('name' => $name));
+                                                $result = $query->row();
+
+                                                // Si l'auteur n'existe pas, l'ajouter
+                                                if (!$result) {
+                                                    $this->db->insert('_author', array(
+                                                        'name' => $name,
+                                                    ));
+                                                }
+
+                                                // Ajouter dans _wr
+                                                $this->db->insert("_written_by", array(
+                                                    'id_dblp' => intval($publication['@id']),
+                                                    'name' => $name)
+                                                );
+
+                                            }
+                                        }
                                     }
                                 }
                             }
