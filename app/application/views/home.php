@@ -53,6 +53,16 @@
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
     </div>
+
+    <div class="container">
+        <h2> Set Gender to authors</h2>
+        <?php echo validation_errors();?>
+        <?php echo form_open('gender/gender_probability')?>
+            <div class="form-group">
+            </div>
+            <button type="submit" name="submit" value ="Set" class="btn btn-primary">Set</button>
+        </form>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
