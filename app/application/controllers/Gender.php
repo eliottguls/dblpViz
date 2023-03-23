@@ -1,5 +1,5 @@
 <?php
-class Publication_controller extends CI_Controller {
+class Gender extends CI_Controller {
 
     public function __construct()
     {
@@ -10,7 +10,9 @@ class Publication_controller extends CI_Controller {
     public function gender_probability()
     {
         $this->Gender_model->get_gender_probability_name();
-        redirect('/app');
+        $data['content'] = 'home';   
+        $this->load->vars($data);
+        $this->load->view('template');
     }
 
     public function confirmation()
