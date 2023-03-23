@@ -17,17 +17,22 @@ class Publication_model extends CI_Model
 
         $resultat = $this->db->get()->row();
 
-        $array_name = array();
+        $array_name_last_name = array();
+        $array_name_last_name_temp = array();
 
         foreach ($resultat as $name_last_name) {
             print_r($name_last_name);
             // get just the name ( characters before the 1st space)
             $name = explode(" ", $name_last_name);
-            array_push($array_name, $name, $name_last_name);
+            array_push($array_name_last_name_temp, $name, $name_last_name);
+            array_push($array_name_last_name, $array_name_last_name_temp);
         }
-        
 
-        foreach($array_name as $value){
+
+        
+        $i = 0;
+
+        foreach($array_name_last_name as $value){
 
             // url send to genderize.io with author name
             $url = 'https://api.genderize.io?name=' . urlencode($value[0]);
@@ -40,7 +45,7 @@ class Publication_model extends CI_Model
             $gender = $name_data['gender'];
             $probability = $name_data['probability'];
 
-            $this->db->where('name', $array_name[1]);
+            $this->db->where('name', $value[1]);
 
             try{
                 $this->db->update('_author', array('gender' => $gender));
