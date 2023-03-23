@@ -51,6 +51,20 @@ class Publication extends CI_Controller {
         $this->load->view('template');
     }
 
+    public function get_cited_by(){
+        $this->form_validation->set_rules('key', 'Key', 'required');
+
+        $article_key = $this->input->post('key');
+
+        $cited_by = $this->Publication_model->get_cited_by($article_key);
+        
+        $data['cited_by'] = $cited_by;
+        $data['content']='cite_by_list';
+        $data['doi']=$article_key;
+        $data['title']='List of cite_by';
+        
+    }
+
     public function get_article_by_title(){
 
         $this->form_validation->set_rules('title', 'Title', 'required');
@@ -60,7 +74,6 @@ class Publication extends CI_Controller {
 
         // Récupération des publications de l'auteur depuis la base de données
         $publications = $this->Publication_model->get_publications_by_article($article_title);
-
         
         // Vérification que $publications n'est pas null avant de le passer à la vue
         if($publications['result']['hits']['hit'] !== null){
@@ -74,7 +87,6 @@ class Publication extends CI_Controller {
         }
 
 
-        
         /* Loading the template view. */
         $this->load->vars($data);
         $this->load->view('template');

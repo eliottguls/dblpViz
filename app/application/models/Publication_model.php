@@ -80,6 +80,18 @@ class Publication_model extends CI_Model
         return $all_data;
     }
 
+    public function get_cited_by($doi){
+        $url = 'https://api.crossref.org/works/' . urlencode($doi) . '.biblio';
+        $response = file_get_contents($url);
+
+        $all_data = json_decode($response, true);
+
+        $cache_file = APPPATH . 'cache\crossref\__' . $doi . '__cited-by.json';
+        file_put_contents($cache_file, $response);
+
+        return $all_data;
+    }
+
     public function get_publications_by_article($title)
     {
         // Construire l'URL de l'API DBLP pour récupérer les publications de l'auteur
@@ -112,7 +124,6 @@ class Publication_model extends CI_Model
                 $beggining += 1000;
                 $end += 1000;
 
-                $temp = 0;
                 foreach ($all_data['result']['hits']['hit'] as $publication) {
                     //var pour savoir si c'est un article qui nous intéresse
                     $temp = 0;
