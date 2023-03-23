@@ -53,17 +53,6 @@
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
     </div>
-    <div class="container">
-        <h2>Enter DOI</h2>
-        <?php echo validation_errors();?>
-        <?php echo form_open('publication/get_cited_by')?>
-            <div class="form-group">
-                <label for="id">DOI</label>
-                <input type="input" class="form-control" name ="Key"?><br/>
-            </div>
-            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
-        </form>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
