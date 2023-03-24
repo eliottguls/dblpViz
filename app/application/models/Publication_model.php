@@ -92,8 +92,7 @@ class Publication_model extends CI_Model
         return $all_data;
     }
 
-    public function get_publications_by_article($title)
-    {
+    public function get_publications_by_article($title){
         // Construire l'URL de l'API DBLP pour récupérer les publications de l'auteur
         $url = 'https://dblp.org/search/publ/api?q=' . urlencode($title) . '&format=json';
 
