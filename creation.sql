@@ -7,7 +7,7 @@ CREATE TABLE _Article(
     type VARCHAR(1000) not null,
     doi VARCHAR(255) not null,
     title VARCHAR(2000) not null,
-    venue VARCHAR(1000) not null,
+    venue VARCHAR(100) not null,
     year VARCHAR(4) not null,
     pages VARCHAR(20) not null,
     ee VARCHAR(1000) not null,
@@ -43,10 +43,12 @@ CREATE TABLE _written_by(
 );
 
 
-
+-- DROP TABLE _Conference;
+/*
 CREATE TABLE _Conference(
     name_conference VARCHAR(255) PRIMARY KEY
 );
+*/
 
 CREATE TABLE _Year(
     year VARCHAR(4) PRIMARY KEY
@@ -57,21 +59,79 @@ CREATE TABLE _Conference_Rank(
     year VARCHAR(4) not null,
     rank VARCHAR(2) not null,
     PRIMARY KEY (name, year),
-    FOREIGN KEY (name) REFERENCES _Conference(name_conference),
     FOREIGN KEY (year) REFERENCES _Year(year)
 );
 
 CREATE TABLE _Conference_Categories(
-    name_categorie VARCHAR(255) PRIMARY KEY
+    id serial,
+    name_categorie VARCHAR(255),
+    PRIMARY KEY (name_categorie)
 );
 
-CREATE TABLE _Conference_Subject_Rank(  
-    name_categorie VARCHAR(255) not null,
+drop table _Conference_Subject_Rank;
+CREATE TABLE _Conference_Subject_Rank(
+    id serial,
     name_conference VARCHAR(255) not null,
-    year VARCHAR(4) not null,
-    rank VARCHAR(2) not null,
-    PRIMARY KEY (name_categorie, name_conference, year),
-    FOREIGN KEY (name_categorie) REFERENCES _Conference_Categories(name_categorie),
-    FOREIGN KEY (name_conference) REFERENCES _Conference(name_conference),
+    name_categorie VARCHAR(255),
+    rank VARCHAR(2),
+    year VARCHAR(4),
+    PRIMARY KEY (id),
+    --FOREIGN KEY (name_categorie) REFERENCES _Conference_Categories(name_categorie),
     FOREIGN KEY (year) REFERENCES _Year(year)
 );
+
+-- DROP TABLE _Conference_Acronym_Rank;
+CREATE TABLE _Conference_Acronym_Rank(
+    id int not null,
+    name_conference VARCHAR(355) not null,
+    acronym VARCHAR(50),
+    rank VARCHAR(50),
+    Primary KEY (id)
+);
+
+-- DROP TABLE _Country_rank;
+CREATE TABLE _Country_rank(
+    id int not null primary key,
+    country varchar(100) not null,
+    region varchar(100) not null,
+    documents int not null,
+    citable_documents int not null,
+    citations int not null,
+    self_citations int not null,
+    citation_per_documents float,
+    H_Index int not null
+);
+
+INSERT INTO _year (year) VALUES ('2021');
+
+WbImport -file=./CORE_DATA.csv
+         -header=false
+         -delimiter=','
+         -table=_Conference_Acronym_Rank
+         -schema=appli_dblp
+         -filecolumns=id,name_conference,acronym,?,rank;
+;
+
+WbImport -file=./scimagojr_country_rank.csv
+         -header=true
+         -delimiter=';'
+         -table=_Country_rank
+         -schema=appli_dblp
+         -filecolumns=id,country,region,documents,citable_documents,citations,self_citations,citations_per_documents,H_Index;
+;
+
+WbImport -file=./scimagojr_2021_categories_output.csv
+         -header=true
+         -table=_conference_categories
+         -schema=appli_dblp
+         -filecolumns=name_categorie;
+;
+
+WbImport -file=./scimagojr_title_categorie.csv
+         -header=true
+         -delimiter=';'
+         -table=_Conference_Subject_Rank
+         -schema=appli_dblp
+         -filecolumns=name_conference,name_categorie,rank,year;
+         
+select count(*) from appli_dblp._Conference_Subject_Rank where rank = 'Q4 ';
