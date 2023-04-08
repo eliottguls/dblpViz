@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Enter author</h2>
+        <h2>Enter Author</h2>
         <?php echo validation_errors();?>
         <?php echo form_open('publication/get_article_by_author')?>
             <div class="form-group">
@@ -43,7 +43,7 @@
         </form>
     </div>
     <div class="container">
-        <h2>Enter title</h2>
+        <h2>Enter Title</h2>
         <?php echo validation_errors();?>
         <?php echo form_open('publication/get_article_by_title')?>
             <div class="form-group">
@@ -55,7 +55,7 @@
     </div>
 
     <div class="container">
-        <h2> Set Gender to authors</h2>
+        <h2> Set Gender to Authors</h2>
         <?php echo validation_errors();?>
         <?php echo form_open('gender/gender_probability')?>
             <button type="submit" name="submit" value ="Set" class="btn btn-primary">Set</button>
@@ -63,7 +63,22 @@
     </div>
 
     <div class="container">
-        <h2> DOI CROSSREF</h2>
+        <h2> Enter a Name or an Acronym Conference </h2>
+        <?php echo validation_errors();?>
+        <?php echo form_open('conference_rank/get_rank')?>
+        <div class="form-group">
+                <label for="id">NAME / ACRONYM &nbsp | &nbsp</label>
+                <label for="id">Restrictive </label>
+                <input type="checkbox" name="Restrictive"><br/>
+                <input type="input" class="form-control" name ="name_acronym"?><br/>
+                
+            </div>
+            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2> DOI Crossref</h2>
         <?php echo validation_errors();?>
         <?php echo form_open('publication/get_cited_by')?>
         <div class="form-group">
