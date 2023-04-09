@@ -25,7 +25,9 @@ class Publication_model extends CI_Model
         $cache_file = APPPATH . 'cache/dblp/author/filter__' . $author_name . '__publications.json';
 
         // Enregistrer les résultats en cache
-        file_put_contents($cache_file, $response);
+        if ( strlen($cache_file) < 32 ){
+            file_put_contents($cache_file, $response);
+        }
         foreach ($all_data['result']['hits']['hit'] as $publication) {
 
             try {
@@ -111,7 +113,9 @@ class Publication_model extends CI_Model
         $cache_file = APPPATH . 'cache/dblp/title/filter__' . $title . '__publications.json';
 
         // Enregistrer les résultats en cache
-        file_put_contents($cache_file, $response);
+        if ( strlen($cache_file) < 100 ){
+            file_put_contents($cache_file, $response);
+        }
 
         if ($total_results > 1000) {
             $beggining = 0;
