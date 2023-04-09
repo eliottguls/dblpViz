@@ -1,8 +1,8 @@
 import csv
 
-with open('scimagojr 2021.csv', newline='') as infile:
+with open('csv_py/scimagojr 2021.csv', newline='') as infile:
     reader = csv.DictReader(infile, delimiter=';')
-    with open('scimagojr_title_categorie.csv', 'w', newline='') as outfile:
+    with open('csv_py/scimagojr_title_categorie.csv', 'w', newline='') as outfile:
         writer = csv.writer(outfile, delimiter=';')
         writer.writerow(['Title','Category', 'rank'])
         for row in reader:
@@ -18,10 +18,16 @@ with open('scimagojr 2021.csv', newline='') as infile:
                 category_rank = category_rank.replace(";1", ", ")
                 writer.writerow([title, category_rank])
            
-with open('scimagojr_title_categorie.csv', 'r') as file:
+with open('csv_py/scimagojr_title_categorie.csv', 'r') as file:
     text = file.read()
     
-    text = text.replace('"', '').replace('&amp;', '&')
-
-with open('scimagojr_title_categorie.csv', 'w') as file:
+    text = text.replace('"', '').replace('&amp;', '&').replace('; Q', ';Q')
+    text = text.replace('&#x0300;', 'à').replace('Evolution; ', 'Evolution, ')
+    text = text.replace('; ', ', ').replace('&#x0308;', 'Ä').replace('&#x0301;', 'ý')
+    text = text.replace('&#x0304', 'ē').replace('&#x00e9;', 'é').replace('&#x00e9', 'é')
+    text = text.replace('&#x0303;', 'ñ').replace('&#x00e7;', 'ç').replace('l&#x00ed;', 'í')
+    text = text.replace('&#x00f5;', 'õ').replace('Transfer; ', 'Transfer, ')
+    
+    
+with open('csv_py/scimagojr_title_categorie.csv', 'w') as file:
     file.write(text)

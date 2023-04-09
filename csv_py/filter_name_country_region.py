@@ -1,8 +1,8 @@
 import csv
 
-with open('scimagojr 2021.csv', newline='') as infile:
+with open('csv_py/scimagojr 2021.csv', newline='') as infile:
     reader = csv.DictReader(infile, delimiter=';')
-    with open('scimagojr_title_country_region.csv', 'w', newline='') as outfile:
+    with open('csv_py/scimagojr_title_country_region.csv', 'w', newline='') as outfile:
         writer = csv.writer(outfile, delimiter=';')
         writer.writerow(['Title', 'Country', 'Region'])
         for row in reader:
