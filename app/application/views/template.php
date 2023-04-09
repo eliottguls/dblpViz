@@ -7,26 +7,56 @@
   <style>
 
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 50px;
-      background-color: #007bff;
+      height: 5vh;
+      background-color: #343a40;
       color: #fff;
-      z-index: 1;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     p{
       color: #fff;
     }
 
+    body {
+        background-color: grey;
+        color: #fff;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #718096;
+        border-color: #2d3748;
+    }
+
+    h3 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    footer {
+        height: 5vh;
+        width:100%;
+    }
+
+    table {
+        margin: 50px 0px;
+    }
     
   </style>
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="/app">DBLP VIZ</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -46,12 +76,14 @@
     </nav>
   </header>
   
+  <main>
   <div class="container">
     <div class="py-5">
       <?php $this->load->view($content);?>
     </div>
   </div>
-  
+  </main>
+
   <footer class="bg-dark";>
     <div class="container ">
       <div class="row">

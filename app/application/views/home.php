@@ -143,8 +143,17 @@
     <div class="container">
         <h2> Set Gender to Authors</h2>
         <?php echo validation_errors();?>
+        <?php echo form_open('gender/gender_display')?>
+            <div class="form-group">
+                <label for="id">Name | Restrictive </label>
+                <input type="checkbox" name="Restrictive"><br/>
+                <input type="input" class="form-control" name ="name" placeholder="name" ?><br/>
+            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+        <?php echo validation_errors();?>
         <?php echo form_open('gender/gender_probability')?>
-            <button type="submit" name="submit" value ="Set" class="btn btn-primary">Set</button>
+            <button type="submit" name="submit" value ="Set Genders" class="btn btn-primary">Set Genders</button>
         </form>
     </div>
 

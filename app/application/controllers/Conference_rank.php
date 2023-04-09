@@ -19,7 +19,7 @@ class Conference_rank extends CI_Controller {
         // get the rank of the conference by using the models function
         $rank = $this->Conference_rank_model->get_conference_rank($name_acronym, $restrictive);
 
-        $data['name_acronym'] = $name_acronym;
+        $data['input'] = $name_acronym;
         $data['rank_array'] = $rank;
         $data['title'] = 'Conference rank';
         $data['content'] = 'conference_rank_list';

@@ -21,34 +21,20 @@ class Conference_rank_model extends CI_Model
                 $result = $query->result_array();
             }
 
-            // if the sql request return with name and acronym return nothing
-            if (empty($result)) {
-                $result[0]['rank'] = "No rank found";
-            } 
-
-        return $result;
-
         }else {
             //Get all name from the database 
-            $query = $this->db->query("select * from _conference_acronym_rank where name_conference ilike '%$name_acronym'");
+            $query = $this->db->query("select * from _conference_acronym_rank where name_conference ilike '%$name_acronym%'");
 
             $result = $query->result_array();
 
             if (empty($result)) {
-                $query = $this->db->query("select * from _conference_acronym_rank where acronym ilike '%$name_acronym'");
+                $query = $this->db->query("select * from _conference_acronym_rank where acronym ilike '%$name_acronym%'");
                 $result = $query->result_array();
             }
 
-            // if the sql request return with name and acronym return nothing
-            if (empty($result)) {
-                $result = "No rank found";
-                return $result;
-            }
-            
-            return $result;
-
         }
 
-        
+        return $result;
+
     }
 }
