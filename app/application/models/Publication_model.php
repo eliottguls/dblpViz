@@ -27,7 +27,6 @@ class Publication_model extends CI_Model
         // Enregistrer les résultats en cache
         if ( strlen($cache_file) < 32 ){
             file_put_contents($cache_file, $response);
-        }
         foreach ($all_data['result']['hits']['hit'] as $publication) {
 
             try {
