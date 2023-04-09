@@ -46,7 +46,7 @@
         <?php echo form_open('publication/get_article_by_author')?>
             <div class="form-group">
                 <label for="id">Author</label>
-                <input type="input" class="form-control" name ="name" placeholder="name" ><br/>
+                <input type="input" class="form-control" name ="name" placeholder="Author name" ><br/>
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
@@ -57,7 +57,7 @@
         <?php echo form_open('publication/get_article_by_title')?>
             <div class="form-group">
                 <label for="id">Title</label>
-                <input type="input" class="form-control" name ="title" placeholder="Title"><br/>
+                <input type="input" class="form-control" name ="title" placeholder="Article Title"><br/>
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
@@ -71,7 +71,7 @@
                 <label for="name_id">NAME / ACRONYM &nbsp | &nbsp</label>
                 <label for="restict_id">Restrictive </label>
                 <input type="checkbox" name="Restrictive"><br/>
-                <input type="input" class="form-control" name ="name_acronym" placeholder="name or acronym"><br/>
+                <input type="input" class="form-control" name ="name_acronym" placeholder="name or acronym of Conference"><br/>
                 
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
@@ -147,7 +147,7 @@
             <div class="form-group">
                 <label for="id">Name | Restrictive </label>
                 <input type="checkbox" name="Restrictive"><br/>
-                <input type="input" class="form-control" name ="name" placeholder="name" ?><br/>
+                <input type="input" class="form-control" name ="name" placeholder="Author name" ?><br/>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
             </div>
         </form>
@@ -164,7 +164,7 @@
             <div class="form-group">
                 <label for="id">Name | Restrictive </label>
                 <input type="checkbox" name="Restrictive"><br/>
-                <input type="input" class="form-control" name ="name" placeholder="title" ?><br/>
+                <input type="input" class="form-control" name ="name" placeholder="Journal title" ?><br/>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
             </div>
         </form>
@@ -181,6 +181,30 @@
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
+    </div>
+
+    <div class="container">
+        <h2> Search Jouranl Categories rank </h2>
+        <?php echo validation_errors();?>
+        <?php echo form_open('Journal/get_rank_title')?>
+        <div class="form-group">
+                <label for="id"> Journal | Restrictive </label>
+                <input type="checkbox" name="Restrictive"><br/>
+                <input type="input" class="form-control" name ="name" placeholder="Journal name"><br/>
+            </div>
+            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
+        </form>
+
+        <?php echo validation_errors();?>
+        <?php echo form_open('Journal/get_rank_categorie')?>
+        <div class="form-group">    
+                <label for="id"> Categorie | Restrictive </label>
+                <input type="checkbox" name="Restrictive"><br/>
+                <input type="input" class="form-control" name ="name" placeholder="Categorie name"><br/>
+            </div>
+            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
+        </form>
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
