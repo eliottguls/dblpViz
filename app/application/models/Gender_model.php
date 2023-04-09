@@ -28,7 +28,9 @@ class Gender_model extends CI_Model
             array_push($array_name_last_name, $name[0], $name_last_name["name"]);
         }
 
-        for ($i=0; $i < (count($array_name_last_name))-1; $i+=2) {
+        $max = 1999; // max number of name send to genderize.io (1000 per day)
+
+        for ($i=0; $i < ($max)-1; $i+=2) {
 
             // url send to genderize.io with author name
             $url = 'https://api.genderize.io?name=' . urlencode($array_name_last_name[$i]);
@@ -53,5 +55,20 @@ class Gender_model extends CI_Model
                 $all_data['error'] = $e->getMessage();
             }
         }
+    }
+
+    function display_gender($name, $restrict)
+    {
+
+         if ($restrict == false){
+            $query = $this->db->query("select * from _author where name ilike '%$name%'");
+            $result = $query->result_array();
+         } else {
+            $query = $this->db->query("select * from _author where name = '$name'");
+            $result = $query->result_array();
+        }
+
+        return $result;
+
     }
 }
