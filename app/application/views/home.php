@@ -40,7 +40,8 @@
 </style>
 </head>
 <body>
-    <div class="container">
+    <!-- NOT WORKING YET -->
+    <!-- <div class="container">
         <h2>Enter Author</h2>
         <?php echo validation_errors();?>
         <?php echo form_open('publication/get_article_by_author')?>
@@ -50,7 +51,7 @@
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
-    </div>
+    </div> -->
     <div class="container">
         <h2>Enter Title</h2>
         <?php echo validation_errors();?>
