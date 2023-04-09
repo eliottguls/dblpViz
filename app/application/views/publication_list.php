@@ -1,55 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title><?php echo $title ?></title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <style>
-            body {
-                background-color: #2d3748;
-                color: #fff;
-            }
-            h2 {
-                text-align: center;
-                padding-top : 100px;
-            }
-            th {
-                background-color: #718096;
-                color: #fff;
-                width: 10%;
-            }
-            td {
-                background-color: #4a5568;
-                color: #fff;
-                width: 10%;
-            }
-            td {
-                background-color: #2d3748;
-            }
 
-            tr:hover td {
-                background-color: #4a5568;
-            }
-            table{
-                margin: 0 auto;
-            }
-
-            .btn-primary {
-                background-color: #718096;
-                border-color: #2d3748;
-            }
-            .container{
-                margin-left: 50px;
-            }
-
-        </style>
-    </head>
-    <body>
             <h2><?php echo $title ?></h2>
             <a href="http://localhost:3000/app/Publication" class="btn btn-primary">Retour à la recherche</a>
             <h3>Nombre de résultats : <?php echo $publications['result']['hits']['@total']; ?></h3>
-            <?php if ($publications['result']['hits']['@total'] > 0) {
-                    echo '<h3>' . print_r($error) . '</h3>';}?>
             <table class="table">
                 <thead>
                     <tr>
@@ -100,5 +52,3 @@ foreach ($publications['result']['hits']['hit'] as $publication) {
 ?>
                 </tbody>
             </table>
-    </body>
-</html>
