@@ -46,7 +46,7 @@
         <?php echo form_open('publication/get_article_by_author')?>
             <div class="form-group">
                 <label for="id">Author</label>
-                <input type="input" class="form-control" name ="name"?><br/>
+                <input type="input" class="form-control" name ="name" placeholder="name" ><br/>
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
@@ -57,7 +57,7 @@
         <?php echo form_open('publication/get_article_by_title')?>
             <div class="form-group">
                 <label for="id">Title</label>
-                <input type="input" class="form-control" name ="title"?><br/>
+                <input type="input" class="form-control" name ="title" placeholder="Title"><br/>
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
@@ -71,7 +71,7 @@
                 <label for="name_id">NAME / ACRONYM &nbsp | &nbsp</label>
                 <label for="restict_id">Restrictive </label>
                 <input type="checkbox" name="Restrictive"><br/>
-                <input type="input" class="form-control" name ="name_acronym"?><br/>
+                <input type="input" class="form-control" name ="name_acronym" placeholder="name or acronym"><br/>
                 
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
@@ -157,6 +157,19 @@
         </form>
     </div>
 
+    <div class="container">
+        <h2> Search Country / Region by Title </h2>
+        <?php echo validation_errors();?>
+        <?php echo form_open('Country/display_country')?>
+            <div class="form-group">
+                <label for="id">Name | Restrictive </label>
+                <input type="checkbox" name="Restrictive"><br/>
+                <input type="input" class="form-control" name ="name" placeholder="title" ?><br/>
+            <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+
 
     <div class="container">
         <h2> DOI Crossref</h2>
@@ -164,7 +177,7 @@
         <?php echo form_open('publication/get_cited_by')?>
         <div class="form-group">
                 <label for="id">DOI</label>
-                <input type="input" class="form-control" name ="doi"?><br/>
+                <input type="input" class="form-control" name ="doi" placeholder="doi" ><br/>
             </div>
             <button type="submit" name="submit" value ="Search" class="btn btn-primary">Search</button>
         </form>
