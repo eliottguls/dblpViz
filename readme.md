@@ -5,53 +5,52 @@
 - Axel MICHELO
 - Lucas THETIOT
 
-## Context : 
-
-We start a big DATA project about the dblp articles and data related to them. We decide to use the framework CodeIgniter to make our website. We also use a PostGreSQL database to store all the data. The objective of the project was to collect a large amount of data from dblp, api's and other website that i will list below. The second step was to do an interface for the user to be able to do lots of researches with the data collected before like also listed below. 
+## Context :
+DBLP is a popular computer science bibliography website that provides open bibliographic information on major computer science conferences and journals. The DBLPViz project aims to collect a large amount of data from DBLP, APIs, and other websites related to computer science research, and present it in a user-friendly way. The project uses the CodeIgniter PHP framework for its website, and the PostgreSQL database to store all the data.
 
 ## Tools used :
+- CodeIgniter: PHP framework
+- PostgreSQL: database
+- DBLP: data source and API
+- Semantic Scholar: data source and API for articles
+- Core API: API for conferences
+- Scimago: data source for journals
+- Genderize.io: API to determine gender from a name
 
-- CodeIgniter : php framework
-- PostGreSQL : database
-- Dblp : data source and api
-- Semantic Scholar : data source and api for the articles
-- Core api : api for the conferences
-- Scimago : data source for the journals
-- genderize.io : api to determine gender from a name
+## Functionality :
+The DBLPViz website offers the following functionalities:
+- Search for an article by title: enter a title and the website will return all the articles that have the same title
+- Search for an article by author: available soon
+- Add an article to the database: select between "Article journal" and "Conference and Workshop Papers"
+- Search Conference rank: by using name or acronym of the conference and you can use a "Restrictive button" to just select exactly the title or acronym used
+- Set genders to author: 2 functionalities
+    - first search: enter a name and the website will return their gender and the probability of the result, with a restrict button to just select the name used
+    - second set: to set a gender using Genderize API at the 1000th author in the database (due to API limits)
+- Search Country by title: enter a journal title and get the country of the journal
+- Search Categories rank of a journal: enter a journal title or a name of a category and get the rank of the journal, with a restrict button to just select the title used or categories
+- Set doi to article: **to be added**
 
-## Fonctionnalities :
-
-- Search for an article by title : enter a title and the website will return all the articles that have the same title
-- Search for an article by author : available soon
-- Add an article to the database : select beetwen "Article journal" and "Conference and Workshop Papers"
-- Search Conference rank : by using name or acronym of the conference and u can use a "Restrictive button" to just select exactly the title or acronym used
-- Set genders to author : 2 fonctionnalities
-    - first Search : enter a name and the website will return his gender and the probability of the result with also a restrict button to just select the name used
-    - second Set : to set a gender by using genderize at 1000st of author in the database ( 1000st because of the limit of the api )
-
-- Search Country by title : enter a journal title and get the country of the journal
-- Search Categories rank of a journal : enter a journal title or a name of a category and get the rank of the journal, also a restrict button to just select the title used or categories
-- Set doi to article : **jsp eliott ecrit**
-
-
-## Utilisation
-
-- First you need to clone the repository on your computer. 
+## Usage
+To use the DBLPViz website:
+1. Clone the repository on your computer: 
 ```bash
 git clone https://github.com/eliottguls/dblpViz.git
 ```
+2. Start the server at the main directory of the project: `dblpViz/`
+3. Configure the database by updating the `database.php` file in the `dblpViz/app/config` directory.
+4. Launch the database with the SQL script located at the root of the project: `dblpViz/creation.sql`
+5. Access the main page at the URL: `http://localhost/app/`
 
-- After you need to start the server at the main directory of the project : dblpViz/
+## Technologies used
+The technologies used in the DBLPViz project are:
+- PHP version 7.4
+- PostgreSQL version 12.7
 
-- The database mustbe configurate, you can find the file in the folder : dblpViz/app/config/database.php
-
-- You need to launch the database with the sql script at the root of the project : dblpViz/creation.sql
-
-- Now you can start to use the website. You can find the main page at the url : http://localhost/app/
+## Scope and limitations
+The DBLPViz project covers computer science research articles from DBLP, Semantic Scholar, Core API, and Scimago. However, it may not include all articles in these sources, and some data may be incomplete or outdated.
 
 ## Documentation
-
-- Multiple form that return a lot of data about the articles in dblp
+The DBLPViz website offers multiple forms that return a lot of data about articles in DBLP.
 
 
 
