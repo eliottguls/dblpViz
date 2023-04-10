@@ -52,6 +52,15 @@ The DBLPViz project covers computer science research articles from DBLP, Semanti
 ## Documentation
 The DBLPViz website offers multiple forms that return a lot of data about articles in DBLP.
 
+## Our database
+We have set up a PostgreSQL Server on Azure, thanks to Github Education offers that allow us to store 256 GB of data for free with 1 GB of free processing calculation.
 
+## Design phase
+We initially designed a "normal" relational schema as taught. Later, we received training on star and snowflake schema, resulting in SQL scripts to create an equivalent database using these two schemas. Additionally, we migrated most of the data into our database through our PHP app using different APIs as previously mentioned. Therefore, we also created an SQL script to insert data from the "normal" schema into the other schema.
 
+## Development phase
+The controllers contain multiple if statements, which can be improved for optimization. We developed an algorithmic part to maximize the amount of data we retrieve from our database.
+
+## Difficulties
+The most challenging part of the project was obtaining data from different sources, which required the use of multiple APIs. Unfortunately, some of these APIs were not well documented, and we encountered incomplete or missing data. Additionally, our Wi-Fi connection was unstable, making it difficult to work on the project and insert data into the database.
 
