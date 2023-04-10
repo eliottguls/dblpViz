@@ -45,6 +45,7 @@ git clone https://github.com/eliottguls/dblpViz.git
 The technologies used in the DBLPViz project are:
 - PHP version 7.4
 - PostgreSQL version 12.7
+- Azure POSTGRESQL server
 
 ## Scope and limitations
 The DBLPViz project covers computer science research articles from DBLP, Semantic Scholar, Core API, and Scimago. However, it may not include all articles in these sources, and some data may be incomplete or outdated.
@@ -53,10 +54,15 @@ The DBLPViz project covers computer science research articles from DBLP, Semanti
 The DBLPViz website offers multiple forms that return a lot of data about articles in DBLP.
 
 ## Our database
-We have set up a PostgreSQL Server on Azure, thanks to Github Education offers that allow us to store 256 GB of data for free with 1 GB of free processing calculation.
+We have set up a PostgreSQL Server on Azure, thanks to Github Education offers that allow us to store 256 GB of data for free with Standard_B1ms (1 vCore, 2GB memory, 640 maximum IOPS) of free processing calculation.
+We have authorized any IP address to connect to our DB, so you won't have to change the file `dblpViz/app/config/database.php` to connect to our database unless you are trying to connect to a different database than the one already set up. <br>  
+If you do need to connect to a different database, you can modify the file with your own credentials accordingly. Data insertion into the database is performed through the website, and part of the data is retrieved through the website as well. <br>  
+To ensure proper insertion of data, we recommend having a DBMS open next to the website, after creating the "normal" schema with `creation.sql`.
+
 
 ## Design phase
-We initially designed a "normal" relational schema as taught. Later, we received training on star and snowflake schema, resulting in SQL scripts to create an equivalent database using these two schemas. Additionally, we migrated most of the data into our database through our PHP app using different APIs as previously mentioned. Therefore, we also created an SQL script to insert data from the "normal" schema into the other schema.
+We initially designed a "normal" relational schema as taught. Later, we received training on star and snowflake schema, resulting in SQL scripts to create an equivalent database using these two schemas. <br>  
+Additionally, we migrated most of the data into our database through our PHP app using different APIs as previously mentioned. Therefore, we also created an SQL script to insert data from the "normal" schema into the other schema.
 
 ## Development phase
 The controllers contain multiple if statements, which can be improved for optimization. We developed an algorithmic part to maximize the amount of data we retrieve from our database.
