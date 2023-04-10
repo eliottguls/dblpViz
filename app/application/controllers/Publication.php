@@ -56,12 +56,12 @@ class Publication extends CI_Controller {
 
         $article_key = $this->input->post('key');
 
-        $cited_by = $this->Publication_model->get_cited_by($article_key);
+        $cited_by = $this->Publication_model->get_cited_by();
         
         $data['cited_by'] = $cited_by;
-        $data['content']='cite_by_list';
+        $data['content']='cited_by_list';
         $data['doi']=$article_key;
-        $data['title']='List of cite_by';
+        $data['title']='List of cited_by';
         
     }
 

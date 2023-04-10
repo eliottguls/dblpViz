@@ -25,9 +25,7 @@ class Publication_model extends CI_Model
         $cache_file = APPPATH . 'cache/dblp/author/filter__' . $author_name . '__publications.json';
 
         // Enregistrer les résultats en cache
-        if ( strlen($cache_file) < 32 ){
-            file_put_contents($cache_file, $response);
-        }
+        file_put_contents($cache_file, $response);
         foreach ($all_data['result']['hits']['hit'] as $publication) {
 
             try {
@@ -82,16 +80,61 @@ class Publication_model extends CI_Model
         return $all_data;
     }
 
-    public function get_cited_by($doi){
-        $url = 'https://api.crossref.org/works/' . urlencode($doi) . '.biblio';
-        $response = file_get_contents($url);
+    public function get_cited_by()
+    {
 
-        $all_data = json_decode($response, true);
+        $query = $this->db->select('doi')->get('_article');
+        $result = $query->result_array();
 
-        $cache_file = APPPATH . 'cache\crossref\__' . $doi . '__cited-by.json';
-        file_put_contents($cache_file, $response);
+        $doi_array = array();
+        foreach ($result as $row) {
+            $doi_array[] = $row['doi'];
+        }
 
-        return $all_data;
+        foreach ($doi_array as $doi) {
+            $url = 'https://api.crossref.org/works/' . $doi;
+            $response = file_get_contents($url);
+
+            $all_data = json_decode($response, true);
+
+            // Gestion de l'erreur 404
+            if (isset($all_data['result']['status']['@code']) && $all_data['status']['@code'] == '404') {
+                continue; // On passe au DOI suivant (car DOI pas dans crossref)
+            }
+
+            
+            $cache_file = APPPATH . 'cache\crossref\____cited-by.json';
+            file_put_contents($cache_file, $response);
+
+            foreach ($all_data['message']['reference'] as $citation) {
+                if (!isset($citation['DOI'])) {
+                    continue;
+                }
+                $exists = false;
+                $verif_query = $this->db->select('cited_doi, cited_by')->get_where('_cited_by_articles', array('cited_doi' => $doi, 'cited_by' => $citation['DOI']));
+                $verif_result = $verif_query->result_array();
+
+                if (empty($verif_result)) {
+                    $article_title = '';
+                    if (isset($citation['article-title'])) {
+                        $article_title = $citation['article-title'];
+                    } else if (isset($citation['volume-title'])) {
+                        $article_title = $citation['volume-title'];
+                    }
+                    // Insertion des données dans la base de données si l'article n'est pas déjà dedans
+                    $this->db->insert('_cited_by_articles', array(
+                        'cited_doi' => $doi,
+                        'cited_by' => $citation['DOI'],
+                        'title' => $article_title,
+                        //'year' => $citation['year'],
+                        'journal_title' => isset($citation['journal-title']) ? $citation['journal-title'] : '',
+                    ));
+                }
+
+            }
+
+        }
+
     }
 
     public function get_publications_by_article($title)
@@ -113,9 +156,7 @@ class Publication_model extends CI_Model
         $cache_file = APPPATH . 'cache/dblp/title/filter__' . $title . '__publications.json';
 
         // Enregistrer les résultats en cache
-        if ( strlen($cache_file) < 100 ){
-            file_put_contents($cache_file, $response);
-        }
+        file_put_contents($cache_file, $response);
 
         if ($total_results > 1000) {
             $beggining = 0;
@@ -138,73 +179,76 @@ class Publication_model extends CI_Model
 
                         if (!$result) {
                             if (isset($publication['info']['doi']) && isset($publication['info']['pages'])) {
-                                if (!is_array($publication['info']['venue']) && isset($publication['info']['venue'])) {
+                                if (isset($publication['info']['venue'])) {
 
-                                    if ($publication['info']['type'] == 'Conference and Workshop Papers') {
-                                        // Insertion des données dans la base de données si l'article n'est pas déjà dedans
-                                        $this->db->insert('_article', array(
-                                            'id_dblp' => intval($publication['@id']),
-                                            'type' => $publication['info']['type'],
-                                            'doi' => strval($publication['info']['doi']),
-                                            'title' => $publication['info']['title'],
-                                            'venue' => $publication['info']['venue'],
-                                            'year' => intval($publication['info']['year']),
-                                            'pages' => $publication['info']['pages'],
-                                            'ee' => $publication['info']['ee'],
-                                            'url_dblp' => $publication['info']['url'],
-                                        ));
-                                        $this->db->insert('_conference_article', array(
-                                            'id_dblp' => intval($publication['@id']),
-                                        ));
-                                    } else if ($publication['info']['type'] == 'Journal Articles' && isset($publication['info']['number'])) {
-                                        // Insertion des données dans la base de données si l'article n'est pas déjà dedans
-                                        $this->db->insert('_article', array(
-                                            'id_dblp' => intval($publication['@id']),
-                                            'type' => $publication['info']['type'],
-                                            'doi' => strval($publication['info']['doi']),
-                                            'title' => $publication['info']['title'],
-                                            'venue' => $publication['info']['venue'],
-                                            'year' => intval($publication['info']['year']),
-                                            'pages' => $publication['info']['pages'],
-                                            'ee' => $publication['info']['ee'],
-                                            'url_dblp' => $publication['info']['url'],
-                                        ));
-                                        $this->db->insert('_journal_article', array(
-                                            'id_dblp' => intval($publication['@id']),
-                                            'volume' => $publication['info']['venue'],
-                                            'number_journal' => $publication['info']['number'],
-                                        ));
-                                    } else {
-                                        $temp = 1;
-                                    }
-                                    if ($temp === 0) {
-                                        // Insertion des données dans la base de données si l'article n'est pas déjà dedans
-                                        for ($i = 0; $i < count($publication['info']['authors']['author']); $i++) {
-                                            // Vérifier si l'auteur existe déjà
-                                            $all_data = $publication['info']['authors']['author'];
-                                            if (isset($all_data[$i]['text'])){
-                                                $name = $all_data[$i]['text'];
-                                            }
+                                    if (!is_array($publication['info']['venue'])) {
 
-                                            if (isset($name)) {
-                                                $query = $this->db->get_where('_author', array('name' => $name));
-                                                $result = $query->row();
-
-                                                // Si l'auteur n'existe pas, l'ajouter
-                                                if (!$result) {
-                                                    $this->db->insert('_author', array(
-                                                        'name' => $name,
-                                                    ));
+                                        if ($publication['info']['type'] == 'Conference and Workshop Papers') {
+                                            // Insertion des données dans la base de données si l'article n'est pas déjà dedans
+                                            $this->db->insert('_article', array(
+                                                'id_dblp' => intval($publication['@id']),
+                                                'type' => $publication['info']['type'],
+                                                'doi' => strval($publication['info']['doi']),
+                                                'title' => $publication['info']['title'],
+                                                'venue' => $publication['info']['venue'],
+                                                'year' => intval($publication['info']['year']),
+                                                'pages' => $publication['info']['pages'],
+                                                'ee' => $publication['info']['ee'],
+                                                'url_dblp' => $publication['info']['url'],
+                                            ));
+                                            $this->db->insert('_conference_article', array(
+                                                'id_dblp' => intval($publication['@id']),
+                                            ));
+                                        } else if ($publication['info']['type'] == 'Journal Articles' && isset($publication['info']['number'])) {
+                                            // Insertion des données dans la base de données si l'article n'est pas déjà dedans
+                                            $this->db->insert('_article', array(
+                                                'id_dblp' => intval($publication['@id']),
+                                                'type' => $publication['info']['type'],
+                                                'doi' => strval($publication['info']['doi']),
+                                                'title' => $publication['info']['title'],
+                                                'venue' => $publication['info']['venue'],
+                                                'year' => intval($publication['info']['year']),
+                                                'pages' => $publication['info']['pages'],
+                                                'ee' => $publication['info']['ee'],
+                                                'url_dblp' => $publication['info']['url'],
+                                            ));
+                                            $this->db->insert('_journal_article', array(
+                                                'id_dblp' => intval($publication['@id']),
+                                                'volume' => $publication['info']['venue'],
+                                                'number_journal' => $publication['info']['number'],
+                                            ));
+                                        } else {
+                                            $temp = 1;
+                                        }
+                                        if ($temp === 0) {
+                                            // Insertion des données dans la base de données si l'article n'est pas déjà dedans
+                                            for ($i = 0; $i < count($publication['info']['authors']['author']); $i++) {
+                                                // Vérifier si l'auteur existe déjà
+                                                $all_data = $publication['info']['authors']['author'];
+                                                if (isset($all_data[$i]['text'])) {
+                                                    $name = $all_data[$i]['text'];
                                                 }
 
-                                                // Ajouter dans _wr
-                                                $this->db->insert("_written_by", array(
-                                                    'id_dblp' => intval($publication['@id']),
-                                                    'name' => $name,
-                                                    'pos' => $i,
-                                                    )
-                                                );
+                                                if (isset($name)) {
+                                                    $query = $this->db->get_where('_author', array('name' => $name));
+                                                    $result = $query->row();
 
+                                                    // Si l'auteur n'existe pas, l'ajouter
+                                                    if (!$result) {
+                                                        $this->db->insert('_author', array(
+                                                            'name' => $name,
+                                                        ));
+                                                    }
+
+                                                    // Ajouter dans _wr
+                                                    $this->db->insert("_written_by", array(
+                                                        'id_dblp' => intval($publication['@id']),
+                                                        'name' => $name,
+                                                        'pos' => $i,
+                                                    )
+                                                    );
+
+                                                }
                                             }
                                         }
                                     }

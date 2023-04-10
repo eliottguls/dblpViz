@@ -102,6 +102,16 @@ CREATE TABLE _Country_rank(
     H_Index int not null
 );
 
+DROP TABLE appli_dblp._cited_by_articles CASCADE;
+CREATE TABLE appli_dblp._cited_by_articles(
+    cited_doi VARCHAR(1000),
+    cited_by VARCHAR(1000),
+    title VARCHAR(2000),
+    year VARCHAR(10),
+    journal_title VARCHAR(2000),
+    FOREIGN KEY (cited_doi) REFERENCES _article(doi)
+);
+
 INSERT INTO _year (year) VALUES ('2021');
 
 WbImport -file=./CORE_DATA.csv
